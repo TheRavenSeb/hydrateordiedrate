@@ -14,7 +14,7 @@ using UnityEngine;
 using Object = UnityEngine.Object;
 using Stream = Alta.Serialization.Stream;
 
-[assembly: MelonInfo(typeof(Hydrateordierate.Mod), "Hydrate or Dierate", "0.0.1", "TheRavenSeb")]
+[assembly: MelonInfo(typeof(Hydrateordierate.Mod), "Hydrate or Dierate", "0.0.3", "TheRavenSeb")]
 [assembly: MelonGame("Alta", "A Township Tale")]
 
 namespace Hydrateordierate
