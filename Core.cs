@@ -14,7 +14,7 @@ using UnityEngine;
 using Object = UnityEngine.Object;
 using Stream = Alta.Serialization.Stream;
 
-[assembly: MelonInfo(typeof(Hydrateordierate.Mod), "Hydrate or Dierate", "0.0.3", "TheRavenSeb")]
+[assembly: MelonInfo(typeof(Hydrateordierate.Mod), "Hydrate or Dierate", "0.0.1", "TheRavenSeb")]
 [assembly: MelonGame("Alta", "A Township Tale")]
 
 namespace Hydrateordierate
@@ -146,10 +146,14 @@ namespace Hydrateordierate
                 foreach (Connection c in new List<Connection>(thirst.Keys))
                 {
                     Player p = c.Player as Player;
-                    if (p == null || p.PlayerController == null) continue;
+                    if (p == null) continue;
+
                     float t = Mathf.Max(0f, thirst[c] - dt * 100f / DrainSeconds);
                     thirst[c] = t;
-                    if (t <= 0f && hurtNow) Hurt(p);
+
+                    if (p.PlayerController != null && t <= 0f && hurtNow)
+                        Hurt(p);
+
                     Mod.Send(c, 10u, (uint)(t * 10f));
                 }
             }
